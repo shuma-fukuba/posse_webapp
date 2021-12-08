@@ -1,0 +1,320 @@
+$font-primary-blue: rgb(15, 113, 188);
+$font-second-blue: rgb(151, 185, 209);
+
+// 円グラフに使う色
+$primary-blue: rgb(3, 69, 236);
+$second-blue: rgb(15, 113, 189);
+$third-blue: rgb(32, 189, 222);
+$forth-blue: rgb(60, 206, 254);
+$fifth-blue: rgb(178, 158, 243);
+$six-blue: rgb(109, 70, 236);
+$seven-blue: rgb(74, 23, 239);
+$eight-blue: rgb(49, 5, 192);
+
+// フォームカラー
+$form-bg: rgb(245, 245, 248);
+
+html {
+    height: 100vh;
+}
+
+body {
+    height: 100vh;
+}
+
+.card {
+    box-shadow: 0 0 8px #d5d5d5;
+    border: none;
+    border-radius: 10px;
+}
+
+.log-btn {
+    //
+    display: inline;
+    border-radius: 20px;
+    color: #fff;
+    background: linear-gradient(to right, $second-blue, $forth-blue);
+    padding: 10px 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.log-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  display: block;
+  width: 100%;
+  opacity: 1;
+  height: 110%;
+  background: linear-gradient(to right, $second-blue, $forth-blue);
+  border-radius: 20px;
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.row {
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    height: 64px;
+    background-color: #fff;
+
+    .header-container {
+        margin: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+    span {
+        color: #97b9d1;
+    }
+}
+
+
+main {
+    position: relative;
+    background-color: #eee;
+    padding-top: 20px;
+    height: -webkit-calc(100vh - 64px);
+}
+
+.main-wrapper {
+    .row {
+        justify-content: center;
+    }
+
+    .main-content {
+        width: -webkit-calc(50% - 10px);
+    }
+
+    .main-left {
+        margin-right: 20px;
+
+        .hour-logs {
+            width: 100%;
+            margin-right: 0;
+            justify-content: center;
+
+            .hour:not(:last-child) {
+                margin-right: 16px;
+            }
+
+            .hour {
+                padding: 16px;
+                text-align: center;
+                margin-bottom: 20px;
+
+                .log-title {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $font-primary-blue;
+                }
+
+                h1 {
+                    font-weight: 600;
+                    font-size: 26px;
+                }
+
+                .log-content {
+                    color: $font-second-blue;
+                }
+            }
+        }
+
+        .bar-graph {
+            padding: 32px 20px 16px 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: center;
+
+            .bar {
+                margin-right: 8px;
+                text-align: center;
+                width: 8px;
+                background: linear-gradient(rgb(59, 204, 254), rgb(17, 117, 191));
+                border-radius: 10px;
+                height: 165px;
+            }
+        }
+    }
+
+    .main-right {
+        display: flex;
+        justify-content: center;
+
+        h1 {
+            font-size: 16px;
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        .card {
+            padding: 20px;
+            width: 50%;
+        }
+
+        .language-circle {
+            margin-right: 16px;
+
+            .language-tags {
+                ul {
+                    margin-left: 0;
+                    padding: 0;
+
+                    li {
+                        display: inline-block;
+                        list-style: circle;
+                    }
+                }
+
+                .languages-tag {
+                    position: relative;
+                    margin-right: 12px;
+                }
+
+                // .languages-tag::before {
+                //     content: "";
+                //     position: absolute;
+                //     top: -webkit-calc(50% - 6px);
+                //     left: -12px;
+                //     border-radius: 50%;
+                //     border: 6px solid;
+                // }
+            }
+        }
+
+        .pie {
+            margin-right: auto;
+            margin-left: auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+
+            span {
+                transform: translateY(-50%);
+                color: #fff;
+                font-size: 26px;
+                font-weight: 700;
+            }
+        }
+
+        #language {
+            background-image: radial-gradient(#fff 35%, transparent 36%), conic-gradient($primary-blue 0% 42%, $second-blue 42% 60%, $third-blue 60% 70%);
+        }
+
+        #contents {
+            background-image: radial-gradient(#fff 35%, transparent 36%), conic-gradient($primary-blue 0% 42%, $second-blue 42% 42% + 33%, $third-blue 42%+33% 100%);
+        }
+    }
+
+    .main-left.col-md, .main-right.col-md {
+        margin: 0;
+    }
+}
+
+
+
+.main-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+// modal
+#modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background-color: #fff;
+    height: 500px;
+    width: 900px;
+    border-radius: 20px;
+
+    .submit {
+        text-align: center;
+    }
+}
+
+// modal form
+.modal-wrapper {
+    display: flex;
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+    .modal-container {
+        width: 50%;
+    }
+
+    .modal-left {
+        margin-left: 56px;
+        margin-right: 40px;
+    }
+
+    .modal-right {
+        margin-right: 56px;
+    }
+
+    p {
+        font-weight: 600;
+    }
+}
+
+
+
+
+.modal-form {
+    border: none;
+    background-color: $form-bg;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.form-content {
+    padding-top: 20px;
+}
+
+.checkbox-form {
+    span {
+        padding: 5px 10px;
+        border-radius: 20px;
+        display: inline-block;
+        background-color: $form-bg;
+        margin: 0;
+
+        input[type=checkbox] {
+            display: none;
+        }
+
+        label {
+            position: relative;
+
+            .checkmark {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 12px;
+                width: 12px;
+
+            }
+
+            .checkbox-text {
+                margin-left: 12px;
+
+            }
+        }
+    }
+}
