@@ -178,15 +178,6 @@ main {
                     position: relative;
                     margin-right: 12px;
                 }
-
-                // .languages-tag::before {
-                //     content: "";
-                //     position: absolute;
-                //     top: -webkit-calc(50% - 6px);
-                //     left: -12px;
-                //     border-radius: 50%;
-                //     border: 6px solid;
-                // }
             }
         }
 
@@ -204,6 +195,14 @@ main {
                 font-size: 26px;
                 font-weight: 700;
             }
+        }
+
+        .pie-fixed {
+            margin-right: auto;
+            margin-left: auto;
+            border-radius: 50%;
+            height: 200px;
+            width: 200px;
         }
 
         #language {

@@ -9,10 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POSSE</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="./static/css/reset.css">
-    <link rel="stylesheet" href="./static/css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <script src="static/script.js"></script>
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="../static/js/script.php" type="text/javascript"></script>
 </head>
 
 <body>
@@ -91,7 +90,7 @@
                 <div class="main-right main-content">
                     <div class="language-circle card">
                         <h1>学習言語</h1>
-                        <canvas id="language"></canvas>
+                        <canvas id="language" class="pie-fixed"></canvas>
                         <div class="language-tags">
                             <ul>
                                 <?php foreach ($languages as $language) : ?>
