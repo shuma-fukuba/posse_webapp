@@ -6,6 +6,10 @@ body {
   height: 100vh;
 }
 
+textarea {
+  resize: none;
+}
+
 .card {
   -webkit-box-shadow: 0 0 8px #d5d5d5;
           box-shadow: 0 0 8px #d5d5d5;
@@ -228,17 +232,13 @@ main {
   width: 200px;
 }
 
-.main-wrapper .main-right #language {
-  background-image: -webkit-radial-gradient(#fff 35%, transparent 36%), conic-gradient(#0345ec 0% 42%, #0f71bd 42% 60%, #20bdde 60% 70%);
-  background-image: radial-gradient(#fff 35%, transparent 36%), conic-gradient(#0345ec 0% 42%, #0f71bd 42% 60%, #20bdde 60% 70%);
-}
-
 .main-wrapper .main-right #contents {
   background-image: -webkit-radial-gradient(#fff 35%, transparent 36%), conic-gradient(#0345ec 0% 42%, #0f71bd 42% 75%, #20bdde 75% 100%);
   background-image: radial-gradient(#fff 35%, transparent 36%), conic-gradient(#0345ec 0% 42%, #0f71bd 42% 75%, #20bdde 75% 100%);
 }
 
-.main-wrapper .main-left.col-md, .main-wrapper .main-right.col-md {
+.main-wrapper .main-left.col-md,
+.main-wrapper .main-right.col-md {
   margin: 0;
 }
 
@@ -256,8 +256,8 @@ main {
   right: 0;
   margin: auto;
   background-color: #fff;
-  height: 500px;
   width: 900px;
+  max-height: 700px;
   border-radius: 20px;
 }
 
@@ -265,14 +265,32 @@ main {
   text-align: center;
 }
 
-.modal-wrapper {
+.modal-wrapper input[type=checkbox] {
+  display: none;
+}
+
+.modal-wrapper .form-the-content {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.modal-wrapper .close-modal {
+  position: absolute;
+  display: block;
+  top: 0.5rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #f5f5f8;
 }
 
 .modal-wrapper .modal-container {
@@ -306,29 +324,114 @@ main {
 
 .checkbox-form span {
   padding: 5px 10px;
-  border-radius: 20px;
   display: inline-block;
-  background-color: #f5f5f8;
   margin: 0;
 }
 
-.checkbox-form span input[type=checkbox] {
+.checkbox-form input[type=checkbox] {
   display: none;
 }
 
-.checkbox-form span label {
+.checkbox-form input[type=checkbox]:checked + .selectbox {
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  color: #fff;
+  background-color: #3ccefe;
+}
+
+.checkbox-form input[type=checkbox]:checked + .selectbox .checkbox {
+  background-color: #0345ec;
+}
+
+.checkbox-form label {
+  margin-bottom: 0;
+}
+
+.checkbox-form .selectbox {
+  border-radius: 20px;
+  background-color: #f5f5f8;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-form .checkbox {
+  padding: 0;
+  display: inline-block;
   position: relative;
+  background-color: #666;
+  width: 1rem;
+  height: 1rem;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  border-radius: 50%;
+  margin-right: 5px;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
 }
 
-.checkbox-form span label .checkmark {
+.checkbox-form .checkbox::before {
+  content: "";
+  width: 5px;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 12px;
-  width: 12px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: .5em;
+  left: .2em;
 }
 
-.checkbox-form span label .checkbox-text {
-  margin-left: 12px;
+.checkbox-form .checkbox::after {
+  content: "";
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  position: absolute;
+  -webkit-transform: rotate(305deg);
+          transform: rotate(305deg);
+  top: .42em;
+  left: .3em;
+}
+
+.twitter .checkbox {
+  padding: 0;
+  display: inline-block;
+  position: relative;
+  background-color: #666;
+  width: 1rem;
+  height: 1rem;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  border-radius: 50%;
+  margin-right: 5px;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.twitter .checkbox::before {
+  content: "";
+  width: 5px;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: .5em;
+  left: .2em;
+}
+
+.twitter .checkbox::after {
+  content: "";
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  position: absolute;
+  -webkit-transform: rotate(305deg);
+          transform: rotate(305deg);
+  top: .42em;
+  left: .3em;
 }
 /*# sourceMappingURL=style.css.map */

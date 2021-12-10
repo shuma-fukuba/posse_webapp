@@ -1,5 +1,7 @@
-<?php require('tags.php');?>
-
+<?
+$contents = ['N予備校', 'ドットインストール', 'POSSE課題'];
+$languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL', '情報システム基礎知識(その他)'];
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -114,51 +116,61 @@
 
             <div class="container card" id="modal">
                 <form class="modal-wrapper container" method="post" action="">
-                    <div class="modal-left modal-container">
-                        <div class="datetime-form form-content">
-                            <p>学習日</p>
-                            <input type="date" class="modal-form" name="datetime" id="datetime">
-                        </div>
+                    <div class="form-the-content">
+                        <div class="modal-left modal-container">
+                            <div class="datetime-form form-content">
+                                <p>学習日</p>
+                                <input type="date" class="modal-form" name="datetime" id="datetime">
+                            </div>
 
-                        <div class="laening-contents-form form-content checkbox-form">
-                            <p>学習コンテンツ(複数選択可)</p>
-                            <?php foreach ($contents as $content): ?>
-                                <span><input type="checkbox" class="learning-contents" name="contents" value="<?php echo $content ?>">
-                                    <span class="checkmark"></span>
-                                    <span class="checkbox-text"><?php echo $content ?></span>
-                                </span>
-                            <?php endforeach; ?>
-                        </div>
+                            <div class="laening-contents-form form-content checkbox-form">
+                                <p>学習コンテンツ(複数選択可)</p>
+                                <?php foreach ($contents as $content) : ?>
 
-                        <div class="learning-language-form form-content checkbox-form">
-                            <p>学習言語（複数選択可）</p>
-                            <?php foreach ($languages as $language) : ?>
-                                <span>
-                                    <label for="<?php echo $language ?>">
-                                        <input type="checkbox" name="language" id="<?php echo $language ?>" value="<?php echo $language ?>">
-                                        <span class="checkmark"></span><?php echo $language ?>
+                                    <label>
+                                        <input type="checkbox" class="learning-contents" name="contents" value="<?php echo $content ?>">
+                                        <span class="selectbox">
+                                            <span class="checkbox-text">
+                                                <span class="checkbox"></span><?php echo $content ?></span>
+                                        </span>
                                     </label>
-                                </span>
-                            <?php endforeach; ?>
+
+                                <?php endforeach; ?>
+                            </div>
+
+                            <div class="learning-language-form form-content checkbox-form">
+                                <p>学習言語（複数選択可）</p>
+                                <?php foreach ($languages as $language) : ?>
+                                    <label>
+                                        <input type="checkbox" name="language" id="<?php echo $language ?>" value="<?php echo $language ?>">
+                                        <span class="selectbox">
+                                            <span class="checkbox-text">
+                                                <span class="checkbox"></span><? echo $language ?></span>
+                                        </span>
+                                    </label>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
 
+                        <div class="modal-right modal-container">
+                            <div class="study-time form-content">
+                                <p>学習時間</p>
+                                <input type="text" name="study-time" class="modal-form">
+                            </div>
+                            <div class="twitter form-content">
+                                <p>Twitter用コメント</p>
+                                <textarea name="twitter" cols="30" rows="10" class="modal-form"></textarea>
+                                <label><input type="checkbox" name="twitter-share" value="share"><span class="checkbox">Twitterにシェアする</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="close-modal" id="close-modal">×</div>
                     </div>
-                    <div class="modal-right modal-container">
-                        <div class="study-time form-content">
-                            <p>学習時間</p>
-                            <input type="text" name="study-time" class="modal-form">
-                        </div>
-                        <div class="twitter form-content">
-                            <p>Twitter用コメント</p>
-                            <textarea name="twitter" cols="30" rows="3" class="modal-form"></textarea>
-                            <p><label><input type="checkbox" value="share">Twitterにシェアする</label></p>
-                        </div>
+                    <div class="submit">
+                        <button class="btn log-btn">記録、投稿</button>
                     </div>
                 </form>
-                <div class="submit">
-                    <div>記録、投稿</div>
-                </div>
-                <div class="close"></div>
+
             </div>
         </div>
     </main>
@@ -172,4 +184,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

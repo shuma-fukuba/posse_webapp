@@ -22,6 +22,10 @@ body {
     height: 100vh;
 }
 
+textarea {
+    resize: none;
+}
+
 .card {
     box-shadow: 0 0 8px #d5d5d5;
     border: none;
@@ -40,18 +44,18 @@ body {
 }
 
 .log-btn::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  display: block;
-  width: 100%;
-  opacity: 1;
-  height: 110%;
-  background: linear-gradient(to right, $second-blue, $forth-blue);
-  border-radius: 20px;
-  filter: blur(6px);
-  z-index: -1;
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    display: block;
+    width: 100%;
+    opacity: 1;
+    height: 110%;
+    background: linear-gradient(to right, $second-blue, $forth-blue);
+    border-radius: 20px;
+    filter: blur(6px);
+    z-index: -1;
 }
 
 .row {
@@ -205,16 +209,17 @@ main {
             width: 200px;
         }
 
-        #language {
-            background-image: radial-gradient(#fff 35%, transparent 36%), conic-gradient($primary-blue 0% 42%, $second-blue 42% 60%, $third-blue 60% 70%);
-        }
+        // #language {
+        //     background-image: radial-gradient(#fff 35%, transparent 36%), conic-gradient($primary-blue 0% 42%, $second-blue 42% 60%, $third-blue 60% 70%);
+        // }
 
         #contents {
             background-image: radial-gradient(#fff 35%, transparent 36%), conic-gradient($primary-blue 0% 42%, $second-blue 42% 42% + 33%, $third-blue 42%+33% 100%);
         }
     }
 
-    .main-left.col-md, .main-right.col-md {
+    .main-left.col-md,
+    .main-right.col-md {
         margin: 0;
     }
 }
@@ -237,8 +242,8 @@ main {
     right: 0;
     margin: auto;
     background-color: #fff;
-    height: 500px;
     width: 900px;
+    max-height: 700px;
     border-radius: 20px;
 
     .submit {
@@ -248,10 +253,30 @@ main {
 
 // modal form
 .modal-wrapper {
-    display: flex;
-    position: relative;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    input[type=checkbox] {
+        display: none;
+    }
+
+    .form-the-content {
+        display: flex;
+        position: relative;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .close-modal {
+        position: absolute;
+        display: block;
+        top: 0.5rem;
+        right: 1rem;
+        cursor: pointer;
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: $form-bg;
+    }
 
     .modal-container {
         width: 50%;
@@ -289,31 +314,111 @@ main {
 .checkbox-form {
     span {
         padding: 5px 10px;
-        border-radius: 20px;
         display: inline-block;
-        background-color: $form-bg;
         margin: 0;
+    }
 
-        input[type=checkbox] {
-            display: none;
+    input[type=checkbox] {
+        display: none;
+
+        // クリックしたときのアニメーション
+        &:checked {
+            +.selectbox {
+                transition: .3s ease;
+                color: #fff;
+                background-color: $forth-blue;
+
+                .checkbox {
+                    background-color: $primary-blue;
+                }
+            }
+        }
+    }
+
+    label {
+        margin-bottom: 0;
+    }
+
+
+    .selectbox {
+        border-radius: 20px;
+        background-color: $form-bg;
+        margin-bottom: 0.5rem;
+    }
+
+    .checkbox {
+        padding: 0;
+        display: inline-block;
+        position: relative;
+        background-color: #666;
+        width: 1rem;
+        height: 1rem;
+        transform-origin: center;
+        border-radius: 50%;
+        margin-right: 5px;
+        transition: .3s ease;
+
+        &::before {
+            content: "";
+            width: 5px;
+            height: 2px;
+            border-radius: 2px; // so that the tick has nice rounded look
+            background: #fff;
+            position: absolute;
+            transform: rotate(45deg);
+            top: .5em; // you'll need to experiment with placement depending on the dimensions you've chosen
+            left: .2em;
         }
 
-        label {
-            position: relative;
+        &::after {
+            content: "";
+            width: 10px;
+            height: 2px;
+            border-radius: 2px;
+            background: #fff;
+            position: absolute;
+            transform: rotate(305deg);
+            top: .42em;
+            left: .3em;
+        }
+    }
+}
 
-            .checkmark {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 12px;
-                width: 12px;
+.twitter {
+    .checkbox {
+        padding: 0;
+        display: inline-block;
+        position: relative;
+        background-color: #666;
+        width: 1rem;
+        height: 1rem;
+        transform-origin: center;
+        border-radius: 50%;
+        margin-right: 5px;
+        transition: .3s ease;
 
-            }
+        &::before {
+            content: "";
+            width: 5px;
+            height: 2px;
+            border-radius: 2px; // so that the tick has nice rounded look
+            background: #fff;
+            position: absolute;
+            transform: rotate(45deg);
+            top: .5em; // you'll need to experiment with placement depending on the dimensions you've chosen
+            left: .2em;
+        }
 
-            .checkbox-text {
-                margin-left: 12px;
-
-            }
+        &::after {
+            content: "";
+            width: 10px;
+            height: 2px;
+            border-radius: 2px;
+            background: #fff;
+            position: absolute;
+            transform: rotate(305deg);
+            top: .42em;
+            left: .3em;
         }
     }
 }
