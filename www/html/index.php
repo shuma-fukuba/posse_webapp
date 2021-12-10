@@ -1,6 +1,8 @@
 <?
 $contents = ['N予備校', 'ドットインストール', 'POSSE課題'];
+$contents_name = ['n-Yobi', 'dot', 'posse'];
 $languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL', '情報システム基礎知識(その他)'];
+$languages_name = ['html', 'css', 'js', 'php', 'lara', 'sql', 'shell', 'other'];
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -11,9 +13,11 @@ $languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL', '�
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POSSE</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/reset.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <script src="../static/js/script.php" type="text/javascript"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="./js/chart.js"></script>
+    <script src="./js/script.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -26,7 +30,7 @@ $languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL', '�
                 </div>
             </div>
             <div class="header-right">
-                <button class="btn log-btn">記録・投稿</button>
+                <button class="btn log-btn" id="open-modal">記録・投稿</button>
             </div>
         </div>
     </header>
@@ -92,11 +96,14 @@ $languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL', '�
                 <div class="main-right main-content">
                     <div class="language-circle card">
                         <h1>学習言語</h1>
-                        <canvas id="language" class="pie-fixed"></canvas>
+                        <canvas id="language" class="pie"></canvas>
                         <div class="language-tags">
                             <ul>
-                                <?php foreach ($languages as $language) : ?>
-                                    <li><span class="languages-tag" id="<?php echo $language ?>"><?php echo $language ?></span></li>
+                                <?
+                                $count = 0;
+                                foreach ($languages as $language) : ?>
+                                    <? $count++ ?>
+                                    <li><span class="languages-tag incircle-tag color-<? echo $count ?>" id="<?php echo $language ?>"><?php echo $language ?></span></li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
@@ -104,7 +111,21 @@ $languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL', '�
 
                     <div class="contents-circle card">
                         <h1>学習コンテンツ</h1>
-                        <div class="pie" id="contents"><span>42%</span></div>
+                        <canvas id="content-circle" class="pie"></canvas>
+                        <div class="content-tags">
+                            <ul>
+                                <?
+                                $count = 0;
+                                foreach ($contents as $content) : ?>
+                                    <? $count++ ?>
+                                    <li>
+                                        <span class="content-tag incircle-tag color-<? echo $count ?>">
+                                            <? echo $content ?>
+                                        </span>
+                                    </li>
+                                <? endforeach ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -113,8 +134,11 @@ $languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL', '�
                     <a href="#">&lt;</a><span>2020年 10月</span><a href="#">&gt;</a>
                 </div>
             </div>
+        </div>
 
-            <div class="container card" id="modal">
+        <div class="modal" id="modal">
+            <div class="modal-bg close-modal"></div>
+            <div class="container card" id="modal-content">
                 <form class="modal-wrapper container" method="post" action="">
                     <div class="form-the-content">
                         <div class="modal-left modal-container">
@@ -160,7 +184,7 @@ $languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL', '�
                             <div class="twitter form-content">
                                 <p>Twitter用コメント</p>
                                 <textarea name="twitter" cols="30" rows="10" class="modal-form"></textarea>
-                                <label><input type="checkbox" name="twitter-share" value="share"><span class="checkbox">Twitterにシェアする</span>
+                                <label><input type="checkbox" name="twitter-share" value="share"><span class="checkbox"></span>Twitterにシェアする
                                 </label>
                             </div>
                         </div>
@@ -170,19 +194,18 @@ $languages = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL', '�
                         <button class="btn log-btn">記録、投稿</button>
                     </div>
                 </form>
-
             </div>
         </div>
+
     </main>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
+    <script src="./js/script.js" type="text/javascript"></script>
 </body>
 
 </html>
