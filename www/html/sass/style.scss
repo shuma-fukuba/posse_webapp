@@ -11,8 +11,35 @@ $six-blue: rgb(109, 70, 236);
 $seven-blue: rgb(74, 23, 239);
 $eight-blue: rgb(49, 5, 192);
 
+$languages-colors: $primary-blue,
+$second-blue,
+$third-blue,
+$forth-blue,
+$fifth-blue,
+$six-blue,
+$seven-blue,
+$eight-blue;
+
+$contents-colors: $primary-blue,
+$second-blue,
+$third-blue;
+
 // フォームカラー
 $form-bg: rgb(245, 245, 248);
+
+@mixin graph-property($colors, $len) {
+    @for $i from 1 through $len {
+        .incircle-tag.color-#{$i}::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            background-color: nth($colors, $i);
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+    }
+}
 
 html {
     height: 100vh;
@@ -87,6 +114,14 @@ main {
     background-color: #eee;
     padding-top: 20px;
     height: -webkit-calc(100vh - 64px);
+}
+
+.language-tags {
+    @include graph-property($languages-colors, 8);
+}
+
+.content-tags {
+    @include graph-property($contents-colors, 3);
 }
 
 .main-wrapper {
@@ -191,17 +226,6 @@ main {
             margin-bottom: 20px;
         }
 
-        .incircle-tag {
-            &::before {
-                content:  "";     /* 空の要素作成 */
-                width:  12px;               /* 幅指定 */
-                height:  12px;              /* 高さ指定 */
-                display:  inline-block;     /* インラインブロックにする */
-                background-color: #F44336;  /* 背景色指定 */
-                border-radius:  50%;
-                margin-right: 5px;
-            }
-        }
 
         #contents {
             background-image: radial-gradient(#fff 35%, transparent 36%), conic-gradient($primary-blue 0% 42%, $second-blue 42% 42% + 33%, $third-blue 42%+33% 100%);
@@ -243,7 +267,7 @@ main {
 }
 
 .modal-bg {
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.8);
     height: 100vh;
     position: absolute;
     width: 100%;
