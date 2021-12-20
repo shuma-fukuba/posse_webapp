@@ -18,13 +18,13 @@ services:
       - db
 
   db:
-    image: mysql:latest
+    image: mysql:8.0
     ports:
       - "13306:3306"
     volumes:
       - ./mysql/data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: yukiti0110
+      MYSQL_ROOT_PASSWORD: password
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest

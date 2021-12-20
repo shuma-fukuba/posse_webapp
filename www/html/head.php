@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="./static/css/reset.css">
     <link rel="stylesheet" href="./static/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="./static/js/chart.js"></script>
-    <?php require_once dirname(__FILE__) . '/variables.php' ?>
-    <script src="./static/js/script.js" type="text/javascript"></script>
+    <script src="./static/js/chart.js" type="text/javascript"></script>
+    <?php require_once dirname(__FILE__) . '/static/js/script.php' ?>
 </head>

@@ -9,8 +9,3 @@ $language_data = json_encode($language_data);
 
 $content_data = [42, 33, 25];
 $content_data = json_encode($content_data);
-?>
-<script type="text/javascript">
-    var languageData = JSON.parse('<?=$language_data?>');
-    var contentData =  JSON.parse('<?=$content_data ?>');
-</script>
