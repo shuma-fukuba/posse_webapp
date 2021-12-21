@@ -4,7 +4,9 @@ define('DB_USER', 'root');
 define('DB_PASS', 'password');
 
 try {
-    $db = new PDO(DSN, DB_USER, DB_PASS,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,]);
+    $db = new PDO(DSN, DB_USER, DB_PASS,
+    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,]
+);
 } catch(PDOException $e){
     print('DB接続エラー:' . $e->getMessage());
 }
