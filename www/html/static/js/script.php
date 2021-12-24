@@ -27,7 +27,7 @@ window.onload = () => {
     //                     'rgb(74, 23, 239)',
     //                     'rgb(49, 5, 192)',
     //                 ],
-    //                 data: <?= $language_value; ?>,
+    //                 data:  //$language_value;
     //             }
     //         ],
     //     },
@@ -47,7 +47,7 @@ window.onload = () => {
     //                     'rgb(15, 113, 189)',
     //                     'rgb(32, 189, 222)',
     //                 ],
-    //                 data: <?= $content_value; ?>,
+    //                 data:  // $content_value; ,
     //             }
     //         ],
     //     },

@@ -4,12 +4,12 @@ require_once dirname(__FILE__) . '/dbconnect.php';
 $id = 1;
 
 // その日の時間を取得
-$today_time = $db->prepare('SELECT learning_time FROM learning_log WHERE user_id=:user_id AND learning_date=:learning_date');
+$today_time = $db->prepare('SELECT SUM(learning_time) today_time FROM learning_log WHERE user_id=:user_id AND learning_date=:learning_date');
 $today_time->bindValue(':user_id', $id, PDO::PARAM_INT);
 $today_time->bindValue(':learning_date', date('Y-m-d'), PDO::PARAM_STR);
 $today_time->execute();
 $today_time = $today_time->fetch();
-$today_time = $today_time['learning_time'];
+$today_time = $today_time['today_time'];
 if ($today_time === NULL) {
     $today_time = 0;
 }

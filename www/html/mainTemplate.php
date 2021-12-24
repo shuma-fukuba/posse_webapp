@@ -68,7 +68,7 @@
                                     $count = 0;
                                     foreach ($language_key as $language) : ?>
                                         <?php $count++ ?>
-                                        <li><span class="languages-tag incircle-tag color-<?= $count ?>" id="<?= $language ?>"><?= $language ?></span></li>
+                                        <li><span class="languages-tag incircle-tag color-<?= $count ?>" id="<?= $language ?>"><?= h($language) ?></span></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -85,7 +85,7 @@
                                         <? $count++ ?>
                                         <li>
                                             <span class="content-tag incircle-tag color-<?= $count ?>">
-                                                <?= $content ?>
+                                                <?= h($content) ?>
                                             </span>
                                         </li>
                                     <? endforeach ?>
@@ -123,10 +123,10 @@
                             <p>学習コンテンツ(複数選択可)</p>
                             <?php foreach ($contents as $content) : ?>
                                 <label>
-                                    <input type="checkbox" class="learning-contents" name="contents[]" value="<?= $content['id'] ?>">
+                                    <input type="checkbox" class="learning-contents" name="contents[]" value="<?= h($content['id']) ?>">
                                     <span class="selectbox">
                                         <span class="checkbox-text">
-                                            <span class="checkbox"></span><?= $content['name'] ?></span>
+                                            <span class="checkbox"></span><?= h($content['name']) ?></span>
                                     </span>
                                 </label>
                             <?php endforeach; ?>
@@ -136,11 +136,11 @@
                             <p>学習言語（複数選択可）</p>
                             <?php foreach ($languages as $language) : ?>
                                 <label>
-                                    <input type="checkbox" name="languages[]" value="<?= $language['id'] ?>">
+                                    <input type="checkbox" name="languages[]" value="<?= h($language['id']) ?>">
                                     <span class="selectbox">
                                         <span class="checkbox-text">
                                             <span class="checkbox"></span>
-                                            <?= $language['name'] ?>
+                                            <?= h($language['name']) ?>
                                         </span>
                                     </span>
                                 </label>
@@ -151,7 +151,7 @@
                     <div class="modal-right modal-container">
                         <div class="study-time form-content">
                             <p>学習時間</p>
-                            <input type="text" inputmode="numeric" name="study-time" class="modal-form">
+                            <input type="text" inputmode="numeric" name="study_time" class="modal-form">
                         </div>
                         <div class="twitter form-content">
                             <p>Twitter用コメント</p>
