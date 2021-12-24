@@ -5,17 +5,17 @@
                 <div class="hour-logs row">
                     <div class="hour card col-md" id="today-log">
                         <p class="log-title">Today</p>
-                        <h1>3</h1>
+                        <h1><?= $today_time; ?></h1>
                         <p class="log-content">hour</p>
                     </div>
                     <div class="hour card col-md" id="month-log">
                         <p class="log-title">Month</p>
-                        <h1>120</h1>
+                        <h1><?= $month_time; ?></h1>
                         <p class="log-content">hour</p>
                     </div>
                     <div class="hour card col-md" id="total-log">
                         <p class="log-title">Total</p>
-                        <h1>1348</h1>
+                        <h1><?= $total_time; ?></h1>
                         <p class="log-content">hour</p>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                                 <ul>
                                     <?php
                                     $count = 0;
-                                    foreach ($languages as $language) : ?>
+                                    foreach ($language_key as $language) : ?>
                                         <?php $count++ ?>
                                         <li><span class="languages-tag incircle-tag color-<?= $count ?>" id="<?= $language ?>"><?= $language ?></span></li>
                                     <?php endforeach; ?>
@@ -81,7 +81,7 @@
                                 <ul>
                                     <?php
                                     $count = 0;
-                                    foreach ($contents as $content) : ?>
+                                    foreach ($content_key as $content) : ?>
                                         <? $count++ ?>
                                         <li>
                                             <span class="content-tag incircle-tag color-<?= $count ?>">
@@ -116,17 +116,17 @@
                     <div class="modal-left modal-container">
                         <div class="datetime-form form-content">
                             <p>学習日</p>
-                            <input type="date" class="modal-form" name="datetime" id="datetime">
+                            <input type="date" class="modal-form" name="learning_date" id="datetime">
                         </div>
 
                         <div class="laening-contents-form form-content checkbox-form">
                             <p>学習コンテンツ(複数選択可)</p>
                             <?php foreach ($contents as $content) : ?>
                                 <label>
-                                    <input type="checkbox" class="learning-contents" name="contents[]" value="<?= $content ?>">
+                                    <input type="checkbox" class="learning-contents" name="contents[]" value="<?= $content['id'] ?>">
                                     <span class="selectbox">
                                         <span class="checkbox-text">
-                                            <span class="checkbox"></span><?= $content ?></span>
+                                            <span class="checkbox"></span><?= $content['name'] ?></span>
                                     </span>
                                 </label>
                             <?php endforeach; ?>
@@ -136,11 +136,11 @@
                             <p>学習言語（複数選択可）</p>
                             <?php foreach ($languages as $language) : ?>
                                 <label>
-                                    <input type="checkbox" name="languages[]" value="<?= $language ?>">
+                                    <input type="checkbox" name="languages[]" value="<?= $language['id'] ?>">
                                     <span class="selectbox">
                                         <span class="checkbox-text">
                                             <span class="checkbox"></span>
-                                            <?= $language ?>
+                                            <?= $language['name'] ?>
                                         </span>
                                     </span>
                                 </label>

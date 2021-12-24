@@ -11,5 +11,5 @@
     <link rel="stylesheet" href="./static/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="./static/js/chart.js" type="text/javascript"></script>
-    <?php require_once dirname(__FILE__) . '/static/js/script.php' ?>
+    <?php require_once dirname(__FILE__) . '/static/js/script.php'; ?>
 </head>
