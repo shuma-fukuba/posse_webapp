@@ -55,9 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $stmt->bindValue(":language", $language, PDO::PARAM_INT);
                 $stmt->execute();
             }
-
-            header('Location: index.php');
-            exit();
         }
     }
 }

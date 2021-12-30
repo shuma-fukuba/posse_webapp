@@ -66,7 +66,7 @@
                                 <ul>
                                     <?php
                                     $count = 0;
-                                    foreach ($language_key as $language) : ?>
+                                    foreach ($languages_key as $language) : ?>
                                         <?php $count++ ?>
                                         <li><span class="languages-tag incircle-tag color-<?= $count ?>" id="<?= $language ?>"><?= h($language) ?></span></li>
                                     <?php endforeach; ?>
@@ -81,7 +81,7 @@
                                 <ul>
                                     <?php
                                     $count = 0;
-                                    foreach ($content_key as $content) : ?>
+                                    foreach ($contents_key as $content) : ?>
                                         <? $count++ ?>
                                         <li>
                                             <span class="content-tag incircle-tag color-<?= $count ?>">

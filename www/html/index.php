@@ -4,9 +4,6 @@ session_start();
 require_once dirname(__FILE__) . '/dbconnect.php';
 // 関数定義
 require_once dirname(__FILE__) . '/functions.php';
-// 変数宣言
-require_once dirname(__FILE__) . '/variables.php';
-
 // データ挿入
 require_once dirname(__FILE__) . '/insert.php';
 // データ取得
