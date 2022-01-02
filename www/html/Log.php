@@ -1,5 +1,7 @@
 <?php
 
+namespace MyApp;
+
 class Log
 {
     public function __construct($db, $id)
@@ -42,11 +44,11 @@ class Log
             if (!$stmt) {
                 die($this->db->error);
             }
-            $stmt->bindValue(':comment', $comment, PDO::PARAM_STR);
-            $stmt->bindValue(':learning_time', $time, PDO::PARAM_INT);
-            $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
-            $stmt->bindValue(':learning_date', $learning_date, PDO::PARAM_STR);
-            $stmt->bindvalue(':created', date('Y-m-d'), PDO::PARAM_STR);
+            $stmt->bindValue(':comment', $comment, \PDO::PARAM_STR);
+            $stmt->bindValue(':learning_time', $time, \PDO::PARAM_INT);
+            $stmt->bindValue(':id', $this->id, \PDO::PARAM_INT);
+            $stmt->bindValue(':learning_date', $learning_date, \PDO::PARAM_STR);
+            $stmt->bindvalue(':created', date('Y-m-d'), \PDO::PARAM_STR);
             $success = $stmt->execute();
 
 
@@ -58,15 +60,15 @@ class Log
                 foreach ($contents_ids as $content) {
                     $content = (int)$content;
                     $stmt = $this->db->prepare("INSERT INTO contents_connect SET log_id=:log_id, content_id=:content_id");
-                    $stmt->bindValue(':log_id', $log_id, PDO::PARAM_INT);
-                    $stmt->bindValue(':content_id', $content, PDO::PARAM_INT);
+                    $stmt->bindValue(':log_id', $log_id, \PDO::PARAM_INT);
+                    $stmt->bindValue(':content_id', $content, \PDO::PARAM_INT);
                     $stmt->execute();
                 }
                 foreach ($languages_ids as $language) {
                     $language = (int)$language;
                     $stmt = $this->db->prepare("INSERT INTO languages_connect SET log_id=:log_id, language_id=:language");
-                    $stmt->bindValue(":log_id", $log_id, PDO::PARAM_INT);
-                    $stmt->bindValue(":language", $language, PDO::PARAM_INT);
+                    $stmt->bindValue(":log_id", $log_id, \PDO::PARAM_INT);
+                    $stmt->bindValue(":language", $language, \PDO::PARAM_INT);
                     $stmt->execute();
                 }
                 header('Location: ' . SITE_URL);
@@ -77,8 +79,8 @@ class Log
     private function getDailyTime()
     {
         $today_time = $this->db->prepare('SELECT SUM(learning_time) today_time FROM learning_log WHERE user_id=:user_id AND learning_date=:learning_date');
-        $today_time->bindValue(':user_id', $this->id, PDO::PARAM_INT);
-        $today_time->bindValue(':learning_date', date('Y-m-d'), PDO::PARAM_STR);
+        $today_time->bindValue(':user_id', $this->id, \PDO::PARAM_INT);
+        $today_time->bindValue(':learning_date', date('Y-m-d'), \PDO::PARAM_STR);
         $today_time->execute();
         $today_time = $today_time->fetch();
         $today_time = $today_time['today_time'];
@@ -92,7 +94,7 @@ class Log
     private function getMonthlyTime()
     {
         $month_time = $this->db->prepare('SELECT SUM(learning_time) sum_month FROM learning_log WHERE learning_date >= DATE_ADD(NOW(), interval -1 month) AND user_id=:user_id');
-        $month_time->bindValue(':user_id', $this->id, PDO::PARAM_INT);
+        $month_time->bindValue(':user_id', $this->id, \PDO::PARAM_INT);
         $month_time->execute();
         $month_time = $month_time->fetch();
         $month_time = $month_time['sum_month'];
@@ -106,7 +108,7 @@ class Log
     private function getTotalTime()
     {
         $total_time = $this->db->prepare('SELECT SUM(learning_time) total FROM learning_log WHERE user_id=:user_id');
-        $total_time->bindValue(':user_id', $this->id, PDO::PARAM_INT);
+        $total_time->bindValue(':user_id', $this->id, \PDO::PARAM_INT);
         $total_time->execute();
         $total_time = ($total_time->fetch())['total'];
         if ($total_time === NULL) {
@@ -122,7 +124,7 @@ class Log
         select id from learning_log where learning_date >= DATE_ADD(NOW(), interval -1 month) and user_id=:user_id
     ) group by contents_connect.content_id ORDER BY count DESC');
 
-        $stmt->bindValue(':user_id', $this->id, PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $this->id, \PDO::PARAM_INT);
         $stmt->execute();
         $values = $stmt->fetchAll();
 
@@ -142,7 +144,7 @@ class Log
         select id from learning_log where learning_date >= DATE_ADD(NOW(), interval -1 month) and user_id=:user_id
     ) group by languages_connect.language_id ORDER BY count DESC');
 
-        $stmt->bindValue(':user_id', $this->id, PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $this->id, \PDO::PARAM_INT);
         $stmt->execute();
         $values = $stmt->fetchAll();
 

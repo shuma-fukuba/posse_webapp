@@ -1,4 +1,6 @@
 <?php
+use MyApp\Log;
+use MyApp\Token;
 require_once dirname(__FILE__) . '/config.php';
 
 // データ取得

@@ -1,5 +1,7 @@
 <?php
 
+namespace MyApp;
+
 class Utils
 {
     // htmlspacialcharsを究極に短く

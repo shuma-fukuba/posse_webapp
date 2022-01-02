@@ -1,3 +1,7 @@
+<?php
+use MyApp\Utils;
+?>
+
 <main>
     <div class="container-fluid" id="main">
         <button class="btn phone-btn log-btn" id="ph-open-modal">記録・投稿</button>
