@@ -4,9 +4,7 @@
             <div class="header-left">
                 <div class="header-logo">
                     <img src="./static/img/logo.jpeg" alt="POSSE">
-                    <div class="header-title">
-                        <span>4th week</span>
-                    </div>
+                        <span class="header-title">4th week</span>
                 </div>
             </div>
             <div class="header-right">

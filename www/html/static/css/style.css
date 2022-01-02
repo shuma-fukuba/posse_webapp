@@ -1,12 +1,3 @@
-html {
-  height: 100vh;
-}
-
-body {
-  height: 100vh;
-  display: block;
-}
-
 textarea {
   resize: none;
 }
@@ -56,6 +47,10 @@ header {
   width: 100%;
   height: 64px;
   background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 
 header .header-container {
@@ -80,10 +75,13 @@ header .header-logo {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 header .header-title {
-  vertical-align: middle;
   color: #97b9d1;
 }
 
@@ -92,10 +90,15 @@ header img {
 }
 
 main {
-  position: relative;
-  background-color: #eee;
   padding-top: 20px;
-  height: -webkit-calc(100vh - 64px);
+  margin-top: 64px;
+  background-color: #eee;
+}
+
+#main {
+  padding: 0 20px;
+  width: 100%;
+  position: relative;
 }
 
 .language-tags .incircle-tag.color-1::before {
@@ -208,32 +211,30 @@ main {
   margin-right: 5px;
 }
 
-.main-wrapper .row {
+#main-wrapper {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  gap: 0 20px;
 }
 
-.main-wrapper .main-content {
-  width: -webkit-calc(50% - 10px);
+.main-content {
+  padding: 0;
 }
 
-.main-left {
-  margin-right: 20px;
+.main-content .container {
+  padding: 0;
 }
 
 .main-left .hour-logs {
   width: 100%;
   margin-right: 0;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.main-left .hour-logs .hour:not(:last-child) {
-  margin-right: 16px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 0 20px;
 }
 
 .main-left .hour-logs .hour {
@@ -276,6 +277,7 @@ main {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 20px;
 }
 
 .main-left .bar-graph .bar {
@@ -297,11 +299,14 @@ main {
 
 .main-right .card {
   padding: 20px;
-  width: 50%;
 }
 
-.main-right .language-circle {
-  margin-right: 16px;
+.main-right .row {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 0 20px;
 }
 
 .main-right .language-circle .language-tags ul {
@@ -348,7 +353,6 @@ main {
   right: 0;
   margin: auto;
   background-color: #fff;
-  width: 900px;
   max-height: 700px;
   border-radius: 20px;
 }
@@ -603,5 +607,36 @@ main {
 .error {
   color: #f4bd67;
   font-size: 24px;
+}
+
+.phone-btn {
+  display: none;
+}
+
+@media screen and (min-width: 1200px) {
+  #main {
+    max-width: 1140px;
+  }
+  #modal-content {
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .header-right .log-btn {
+    display: none;
+  }
+  .phone-btn {
+    display: block;
+    width: 92%;
+    padding: 10px 0;
+    position: fixed;
+    z-index: 10;
+    top: calc(100% - 100px/2);
+  }
+  #modal-content {
+    border-radius: 20px 20px 0 0;
+    margin-top: 74px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
