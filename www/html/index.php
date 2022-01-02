@@ -1,12 +1,5 @@
 <?php
-// 関数定義
-require_once dirname(__FILE__) . '/Utils.php';
-require_once dirname(__FILE__) . '/Token.php';
-require_once dirname(__FILE__) . '/Database.php';
-require_once dirname(__FILE__) . '/Log.php';
 require_once dirname(__FILE__) . '/config.php';
-// データベース接続
-require_once dirname(__FILE__) . '/dbconnect.php';
 
 // データ取得
 $id = 1;
