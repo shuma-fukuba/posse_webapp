@@ -4,14 +4,14 @@ namespace MyApp;
 
 class Log
 {
-    public function __construct($db, $id)
+    public function __construct($db, $id, $year, $month)
     {
         $this->db = $db;
         $this->id = $id;
         $this->contents = $this->getContents();
         $this->languages = $this->getLanguages();
         $this->today_time = $this->getDailyTime();
-        $this->month_time = $this->getMonthlyTime();
+        $this->month_time = $this->getMonthlyTime($year, $month);
         $this->total_time = $this->getTotalTime();
         $this->contents_circle_data = $this->getContentsCircleData();
         $this->languages_circle_data = $this->getLanguagesCircleData();
@@ -91,10 +91,12 @@ class Log
     }
 
     // 月間学習時間の取得
-    private function getMonthlyTime()
+    private function getMonthlyTime($year, $month)
     {
-        $month_time = $this->db->prepare('SELECT SUM(learning_time) sum_month FROM learning_log WHERE learning_date >= DATE_ADD(NOW(), interval -1 month) AND user_id=:user_id');
+        $format = (string)$year . (string)$month;
+        $month_time = $this->db->prepare("SELECT SUM(learning_time) sum_month FROM learning_log WHERE DATE_FORMAT(learning_date, '%Y%m')=:yearMonth AND user_id=:user_id");
         $month_time->bindValue(':user_id', $this->id, \PDO::PARAM_INT);
+        $month_time->bindValue(':yearMonth', $format, \PDO::PARAM_STR);
         $month_time->execute();
         $month_time = $month_time->fetch();
         $month_time = $month_time['sum_month'];
@@ -162,5 +164,15 @@ class Log
 
     private function getLanguages() {
         return $this->db->query('SELECT * FROM languages')->fetchAll();
+    }
+
+    public function getBarData($year, $month) {
+        $format = (string)$year . (string)$month;
+        $stmt = $this->db->prepare("SELECT SUM(learning_time) time, learning_date FROM learning_log WHERE DATE_FORMAT(learning_date, '%Y%m')=:yearMonth AND user_id=:id GROUP BY learning_date ORDER BY learning_date ASC");
+        $stmt->bindValue(':yearMonth', $format, \PDO::PARAM_STR);
+        $stmt->bindValue(':id', $this->id, \PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
     }
 }

@@ -50,3 +50,6 @@ select contents.name, count(contents_connect.content_id) count from contents joi
 SELECT languages.name, count(languages_connect.language_id) count from languages join languages_connect on languages.id=languages_connect.language_id where languages_connect.log_id in (
         select id from learning_log where learning_date >= DATE_ADD(NOW(), interval -1 month) and user_id=1
     ) group by languages_connect.language_id ORDER BY count DESC;
+
+
+SELECT SUM(learning_time) time, CONVERT(VARCHAR, learning_date, 23) learning_date FROM learning_log WHERE DATE_FORMAT(learning_date, '%Y%m')='202112' AND user_id=1 GROUP BY learning_date ORDER BY learning_date ASC;

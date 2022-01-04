@@ -27,37 +27,7 @@ use MyApp\Utils;
                     </div>
 
                     <div class="bar-graph card">
-                        <div class="bar" style="height: 165px;"></div>
-                        <div class="bar" style="height: 200px;"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
+                        <canvas id="bar"></canvas>
                     </div>
                 </div>
             </div>
@@ -108,7 +78,9 @@ use MyApp\Utils;
         </div>
         <div class="main-bottom">
             <div class="pages">
-                <a href="#">&lt;</a><span>2020年 10月</span><a href="#">&gt;</a>
+                <a href="?year=<?= $pre_year ?>&month=<?= $pre_month ?>">&lt;</a>
+                <span><?= $year ?>年 <?= $month ?>月</span>
+                <a href="?year=<?= $next_year ?>&month=<?= $next_month ?>">&gt;</a>
             </div>
         </div>
     </div>

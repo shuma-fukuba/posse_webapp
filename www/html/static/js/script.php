@@ -1,22 +1,21 @@
 <script type="text/javascript">
-window.onload = () => {
-    $(function () {
-        $('#open-modal').on('click', function () {
-            $('.modal').fadeIn();
-            return false;
+    window.onload = () => {
+        $(function() {
+            $('#open-modal').on('click', function() {
+                $('.modal').fadeIn();
+                return false;
+            });
+            $('.close-modal').on('click', function() {
+                $('.modal').fadeOut();
+                return false;
+            });
         });
-        $('.close-modal').on('click', function () {
-            $('.modal').fadeOut();
-            return false;
-        });
-    });
 
-    let languageCircle = document.getElementById('language');
-    let language = new Chart(languageCircle, {
-        type: 'doughnut',
-        data: {
-            datasets: [
-                {
+        let languageCircle = document.getElementById('language');
+        let language = new Chart(languageCircle, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
                     backgroundColor: [
                         'rgb(3, 69, 236)',
                         'rgb(15, 113, 189)',
@@ -28,32 +27,64 @@ window.onload = () => {
                         'rgb(49, 5, 192)',
                     ],
                     data: <?= $languages_value ?>,
-                }
-            ],
-        },
-        options: {
-            responsive: true,
-        },
-    });
+                }],
+            },
+            options: {
+                responsive: true,
+            },
+        });
 
-    let contentCircle = document.getElementById('content-circle');
-    let content = new Chart(contentCircle, {
-        type: 'doughnut',
-        data: {
-            datasets: [
-                {
+        let contentCircle = document.getElementById('content-circle');
+        let content = new Chart(contentCircle, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
                     backgroundColor: [
                         'rgb(3, 69, 236)',
                         'rgb(15, 113, 189)',
                         'rgb(32, 189, 222)',
                     ],
                     data: <?= $contents_value ?>,
+                }],
+            },
+            options: {
+                responsive: true,
+            },
+        });
+
+        const barGraph = document.getElementById('bar');
+        let ctx = barGraph.getContext('2d');
+        let gradient = ctx.createLinearGradient(0, 0, 0, 1000);
+        gradient.addColorStop(0, 'rgb(59, 204, 254)');
+        gradient.addColorStop(1, 'rgb(17, 117, 191)');
+        const bar = new Chart(barGraph, {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    data: [
+                        <?php foreach ($bar as $data) : ?> {
+                                x: '<?= $data['learning_date'] ?>',
+                                y: <?= $data['time'] ?>
+                            },
+                        <?php endforeach; ?>
+                    ],
+                    backgroundColor: gradient,
+                    borderRadious: '20px',
+                    fill: false,
+                }],
+            },
+
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'time',
+                        display: true,
+                        time: {
+                            unit: 'day',
+                        }
+                    }]
                 }
-            ],
-        },
-        options: {
-            responsive: true,
-        },
-    });
-}
+            }
+        });
+    }
 </script>
