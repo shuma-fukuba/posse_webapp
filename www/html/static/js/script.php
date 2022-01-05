@@ -9,6 +9,10 @@
                 $('.modal').fadeOut();
                 return false;
             });
+            $('#phone-open-modal').on('click', function() {
+                $('.modal').fadeIn();
+                return false;
+            });
         });
 
         let languageCircle = document.getElementById('language');
@@ -75,15 +79,44 @@
             },
 
             options: {
-                scales: {
-                    xAxes: [{
-                        type: 'time',
-                        display: true,
-                        time: {
-                            unit: 'day',
-                        }
-                    }]
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+            },
+            scales: {
+                xAxes: {
+                    type: 'time',
+                    time: {
+                        unit: 'day',
+                        displayFormats: {
+                            day: 'DD'
+                        },
+                        unitStepSize: 2
+                    },
+                    scaleLabel: {
+
+                    },
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+
+                    }
+                },
+                yAxes: {
+                    scaleLabel: {
+
+                    },
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+
+                    }
                 }
+
             }
         });
     }

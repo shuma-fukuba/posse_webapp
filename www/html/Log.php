@@ -93,7 +93,7 @@ class Log
     // 月間学習時間の取得
     private function getMonthlyTime($year, $month)
     {
-        $format = (string)$year . (string)$month;
+        $format = (string)$year . sprintf('%02d', $month);
         $month_time = $this->db->prepare("SELECT SUM(learning_time) sum_month FROM learning_log WHERE DATE_FORMAT(learning_date, '%Y%m')=:yearMonth AND user_id=:user_id");
         $month_time->bindValue(':user_id', $this->id, \PDO::PARAM_INT);
         $month_time->bindValue(':yearMonth', $format, \PDO::PARAM_STR);
@@ -167,7 +167,7 @@ class Log
     }
 
     public function getBarData($year, $month) {
-        $format = (string)$year . (string)$month;
+        $format = (string)$year . sprintf('%02d', $month);
         $stmt = $this->db->prepare("SELECT SUM(learning_time) time, learning_date FROM learning_log WHERE DATE_FORMAT(learning_date, '%Y%m')=:yearMonth AND user_id=:id GROUP BY learning_date ORDER BY learning_date ASC");
         $stmt->bindValue(':yearMonth', $format, \PDO::PARAM_STR);
         $stmt->bindValue(':id', $this->id, \PDO::PARAM_INT);

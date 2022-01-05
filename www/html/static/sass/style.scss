@@ -255,6 +255,19 @@ main {
     margin-top: 20px;
 }
 
+.pagenation {
+    font-weight: 600;
+    #pre-page {
+        color: $font-primary-blue;
+    }
+    #next-page {
+        color: $font-second-blue;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+}
+
 
 // modal
 
@@ -328,8 +341,6 @@ main {
 }
 
 
-
-
 .modal-form {
     border: none;
     background-color: $form-bg;
@@ -344,7 +355,7 @@ main {
 
 .checkbox-form {
     span {
-        padding: 5px 10px;
+        padding: 2px 8px;
         display: inline-block;
         margin: 0;
     }
@@ -507,6 +518,9 @@ main {
 }
 
 @media screen and (min-width: 1200px) {
+    main {
+        height: 100vh;
+    }
     #main {
         max-width: 1140px;
     }

@@ -4,7 +4,7 @@ use MyApp\Utils;
 
 <main>
     <div class="container-fluid" id="main">
-        <button class="btn phone-btn log-btn" id="ph-open-modal">記録・投稿</button>
+        <button class="btn phone-btn log-btn" id="phone-open-modal">記録・投稿</button>
         <div class="row" id="main-wrapper">
             <div class="main-left main-content col">
                 <div class="container">
@@ -77,10 +77,10 @@ use MyApp\Utils;
             </div>
         </div>
         <div class="main-bottom">
-            <div class="pages">
-                <a href="?year=<?= $pre_year ?>&month=<?= $pre_month ?>">&lt;</a>
-                <span><?= $year ?>年 <?= $month ?>月</span>
-                <a href="?year=<?= $next_year ?>&month=<?= $next_month ?>">&gt;</a>
+            <div class="pagenation">
+                <a id="pre-page" href="?year=<?= $pre_year ?>&month=<?= $pre_month ?>">&lt;</a>
+                <span id="current-page"><?= $year ?>年 <?=  $month ?>月</span>
+                <a id="next-page" href="?year=<?= $next_year ?>&month=<?= $next_month ?>">&gt;</a>
             </div>
         </div>
     </div>

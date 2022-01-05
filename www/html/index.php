@@ -4,7 +4,6 @@ use MyApp\Token;
 require_once dirname(__FILE__) . '/config.php';
 
 // データ取得
-// 棒グラフのデータ取得
 if (isset($_REQUEST['year']) && is_numeric($_REQUEST['year'])) {
     $year = $_REQUEST['year'];
 } else {
@@ -29,7 +28,6 @@ if ($next_month > 12) {
     $next_month = 1;
     $next_year++;
 }
-
 
 $id = 1;
 $log = new log($db, $id, $year, $month);
