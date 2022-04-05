@@ -4,7 +4,7 @@ use MyApp\Utils;
 
 <main>
     <div class="container-fluid" id="main">
-        <button class="btn phone-btn log-btn" id="phone-open-modal">記録・投稿</button>
+        <button class="btn phone-btn log-btn" id="phone-open-modal">記録・投稿ddd</button>
         <div class="row" id="main-wrapper">
             <div class="main-left main-content col">
                 <div class="container">
